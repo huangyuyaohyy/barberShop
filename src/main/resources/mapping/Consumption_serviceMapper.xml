@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.barberShopSSM.mapper.Consumption_serviceMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.barberShopSSM.pojo.Consumption_service" >
+    <id column="consumption_service_id" property="consumptionServiceId" jdbcType="INTEGER" />
+    <result column="service_name" property="serviceName" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="introduce" property="introduce" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from consumption_service
+    where consumption_service_id = #{consumptionServiceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yq.barberShopSSM.pojo.Consumption_service" >
+    insert into consumption_service (consumption_service_id, service_name, 
+      price, image, introduce
+      )
+    values (#{consumptionServiceId,jdbcType=INTEGER}, #{serviceName,jdbcType=VARCHAR}, 
+      #{price,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yq.barberShopSSM.pojo.Consumption_service" >
+    update consumption_service
+    set service_name = #{serviceName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=INTEGER},
+      image = #{image,jdbcType=VARCHAR},
+      introduce = #{introduce,jdbcType=VARCHAR}
+    where consumption_service_id = #{consumptionServiceId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select consumption_service_id, service_name, price, image, introduce
+    from consumption_service
+    where consumption_service_id = #{consumptionServiceId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select consumption_service_id, service_name, price, image, introduce
+    from consumption_service
+  </select>
+
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select consumption_service_id, service_name, price, image, introduce
+    from consumption_service
+    where service_name = #{service_name}
+  </select>
+  <select id="selectByServiceName" resultMap="BaseResultMap" >
+    select consumption_service_id, service_name, price, image, introduce
+    from consumption_service
+    where service_name = #{serviceName,jdbcType=VARCHAR}
+  </select>
+</mapper>

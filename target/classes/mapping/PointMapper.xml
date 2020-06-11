@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.barberShopSSM.mapper.PointMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.barberShopSSM.pojo.Point" >
+    <id column="point_id" property="pointId" jdbcType="INTEGER" />
+    <result column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from point
+    where point_id = #{pointId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yq.barberShopSSM.pojo.Point" >
+    insert into point (point_id, member_id, num
+      )
+    values (#{pointId,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yq.barberShopSSM.pojo.Point" >
+    update point
+    set member_id = #{memberId,jdbcType=INTEGER},
+      num = #{num,jdbcType=INTEGER}
+    where point_id = #{pointId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select point_id, member_id, num
+    from point
+    where point_id = #{pointId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select point_id, member_id, num
+    from point
+  </select>
+
+
+  <select id="selectByMember" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select point_id, member_id, num
+    from point
+    where member_id=#{value}
+  </select>
+</mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.barberShopSSM.mapper.MemberMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.barberShopSSM.pojo.Member" >
+    <id column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="member_name" property="memberName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from member
+    where member_id = #{memberId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yq.barberShopSSM.pojo.Member" >
+    insert into member (member_id, member_name, password, 
+      tel, address, gender, 
+      birthday)
+    values (#{memberId,jdbcType=INTEGER}, #{memberName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=DATE})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yq.barberShopSSM.pojo.Member" >
+    update member
+    set member_name = #{memberName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE}
+    where member_id = #{memberId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select member_id, member_name, password, tel, address, gender, birthday
+    from member
+    where member_id = #{memberId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select member_id, member_name, password, tel, address, gender, birthday
+    from member
+  </select>
+
+
+  <select id="selectByMember_name" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select member_id, member_name, password, tel, address, gender, birthday
+    from member
+    where member_name = #{member_name}
+  </select>
+  <select id="selectByName" resultMap="BaseResultMap" >
+    select member_id, member_name, password, tel, address, gender, birthday
+    from member
+    where member_name = #{member_name}
+  </select>
+  <select id="selectByMemberId" resultMap="BaseResultMap" >
+    select member_id, member_name, password, tel, address, gender, birthday
+    from member
+    where member_id = #{member_id}
+  </select>
+</mapper>

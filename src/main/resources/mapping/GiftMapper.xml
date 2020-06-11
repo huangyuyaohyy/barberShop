@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.barberShopSSM.mapper.GiftMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.barberShopSSM.pojo.Gift" >
+    <id column="gift_id" property="giftId" jdbcType="INTEGER" />
+    <result column="gift_name" property="giftName" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="introduce" property="introduce" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="exchange_point" property="exchangePoint" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from gift
+    where gift_id = #{giftId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yq.barberShopSSM.pojo.Gift" >
+    insert into gift (gift_id, gift_name, num, 
+      introduce, image, exchange_point, 
+      state)
+    values (#{giftId,jdbcType=INTEGER}, #{giftName,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER}, 
+      #{introduce,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{exchangePoint,jdbcType=INTEGER}, 
+      #{state,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yq.barberShopSSM.pojo.Gift" >
+    update gift
+    set gift_name = #{giftName,jdbcType=VARCHAR},
+      num = #{num,jdbcType=INTEGER},
+      introduce = #{introduce,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      exchange_point = #{exchangePoint,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER}
+    where gift_id = #{giftId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select gift_id, gift_name, num, introduce, image, exchange_point, state
+    from gift
+    where gift_id = #{giftId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select gift_id, gift_name, num, introduce, image, exchange_point, state
+    from gift
+  </select>
+
+
+  <select id="selectByName" resultMap="BaseResultMap" >
+    select gift_id, gift_name, num, introduce, image, exchange_point, state
+    from gift
+    where gift_name = #{giftName,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByState" resultMap="BaseResultMap" >
+    select gift_id, gift_name, num, introduce, image, exchange_point, state
+    from gift
+    where state=#{state,jdbcType=INTEGER}
+  </select>
+</mapper>

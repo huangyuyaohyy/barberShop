@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.barberShopSSM.mapper.BarberMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.barberShopSSM.pojo.Barber" >
+    <id column="barber_id" property="barberId" jdbcType="INTEGER" />
+    <result column="barber_name" property="barberName" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="introduce" property="introduce" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from barber
+    where barber_id = #{barberId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yq.barberShopSSM.pojo.Barber" >
+    insert into barber (barber_id, barber_name, image, 
+      gender, birthday, introduce
+      )
+    values (#{barberId,jdbcType=INTEGER}, #{barberName,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{introduce,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yq.barberShopSSM.pojo.Barber" >
+    update barber
+    set barber_name = #{barberName,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      introduce = #{introduce,jdbcType=VARCHAR}
+    where barber_id = #{barberId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select barber_id, barber_name, image, gender, birthday, introduce
+    from barber
+    where barber_id = #{barberId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select barber_id, barber_name, image, gender, birthday, introduce
+    from barber
+  </select>
+
+  <select id="selectByName" resultMap="BaseResultMap" >
+    select barber_id, barber_name, image, gender, birthday, introduce
+    from barber
+    where barber_name=#{barberName,jdbcType=VARCHAR}
+  </select>
+</mapper>

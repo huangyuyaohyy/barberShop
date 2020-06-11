@@ -1,0 +1,87 @@
+*{
+    margin: 0px;
+
+}
+nav{
+    background-color: #45c59c;
+    height: 40px;
+    line-height: 40px;/*与height一致，垂直居中*/
+    font-weight: bold;
+    font-family: Arial;
+    text-indent: 5px;
+    color: #f9f9f9;
+
+}
+.page-container{
+    width: 95%;
+    margin: 0 auto;
+}
+.item{
+    margin-top: 50px;
+    height: 30px;
+    background-color: aliceblue;
+    line-height: 30px;/*与height一致，垂直居中*/
+    clear: both;
+}
+.r{
+    float: right;
+}
+
+.query{
+    margin-top: 20px;
+    height: 30px;
+    background-color: aliceblue;
+    line-height: 30px;/*与height一致，垂直居中*/
+}
+
+table{
+    width: 100%;
+    border: none;
+    text-align: center;
+
+
+}
+thead th,tr{
+    height: 30px;
+    background-color: aliceblue;
+
+}
+tbody tr{
+    height: 30px;
+    background-color: white;
+
+}
+tbody tr:hover{
+    background-color: #f1f1f1;
+}
+
+.btn{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#a_canvas{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title{
+    float: left;
+    width: 100px;
+    height: 40px;
+    margin-top: 40px;
+}
+.title-on{
+    color: #45c59c;
+}
+.title a{
+    color: #dddddd;
+}

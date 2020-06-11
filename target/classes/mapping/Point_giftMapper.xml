@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.barberShopSSM.mapper.Point_giftMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.barberShopSSM.pojo.Point_gift" >
+    <id column="point_gift_id" property="pointGiftId" jdbcType="INTEGER" />
+    <result column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="gift_id" property="giftId" jdbcType="INTEGER" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="deal_time" property="dealTime" jdbcType="TIMESTAMP" />
+    <result column="fact_time" property="factTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from point_gift
+    where point_gift_id = #{pointGiftId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yq.barberShopSSM.pojo.Point_gift" >
+    insert into point_gift (point_gift_id, member_id, gift_id, 
+      tel, state, deal_time, 
+      fact_time)
+    values (#{pointGiftId,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{giftId,jdbcType=INTEGER}, 
+      #{tel,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{dealTime,jdbcType=TIMESTAMP}, 
+      #{factTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yq.barberShopSSM.pojo.Point_gift" >
+    update point_gift
+    set member_id = #{memberId,jdbcType=INTEGER},
+      gift_id = #{giftId,jdbcType=INTEGER},
+      tel = #{tel,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      deal_time = #{dealTime,jdbcType=TIMESTAMP},
+      fact_time = #{factTime,jdbcType=TIMESTAMP}
+    where point_gift_id = #{pointGiftId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select point_gift_id, member_id, gift_id, tel, state, deal_time, fact_time
+    from point_gift
+    where point_gift_id = #{pointGiftId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select point_gift_id, member_id, gift_id, tel, state, deal_time, fact_time
+    from point_gift
+  </select>
+
+
+  <select id="selectByState" resultMap="BaseResultMap" >
+    select point_gift_id, member_id, gift_id, tel, state, deal_time, fact_time
+    from point_gift
+    where state = #{state,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMember" resultMap="BaseResultMap" >
+    select point_gift_id, member_id, gift_id, tel, state, deal_time, fact_time
+    from point_gift
+    where member_id = #{member_id,jdbcType=INTEGER}
+  </select>
+
+</mapper>

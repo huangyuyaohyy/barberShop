@@ -1,0 +1,25 @@
+.input{
+    margin-left: 10px;
+    width: 180px;
+    height: 38px;
+    border-width: 1px;
+    border-style: solid;
+    background-color:   #fff;
+    border-radius: 2px;}
+.btn{
+    display: inline-block;
+    width: 80px;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    background-color:
+            #009688;
+    color:
+            #fff;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}

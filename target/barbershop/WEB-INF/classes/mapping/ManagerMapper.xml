@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.barberShopSSM.mapper.ManagerMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.barberShopSSM.pojo.Manager" >
+    <id column="manager_id" property="managerId" jdbcType="INTEGER" />
+    <result column="manager_name" property="managerName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from manager
+    where manager_id = #{managerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yq.barberShopSSM.pojo.Manager" >
+    insert into manager (manager_id, manager_name, password
+      )
+    values (#{managerId,jdbcType=INTEGER}, #{managerName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yq.barberShopSSM.pojo.Manager" >
+    update manager
+    set manager_name = #{managerName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where manager_id = #{managerId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select manager_id, manager_name, password
+    from manager
+    where manager_id = #{managerId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select manager_id, manager_name, password
+    from manager
+  </select>
+
+  <select id="selectByManager_name" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select manager_id, manager_name, password
+    from manager
+    where manager_name = #{manager_name}
+  </select>
+</mapper>

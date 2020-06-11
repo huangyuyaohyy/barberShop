@@ -1,0 +1,71 @@
+*{
+    margin: 0px;
+    color: #f9f9f9;
+}
+a{
+    text-decoration: none;
+}
+
+.container{
+    width: 100%;
+
+
+}
+.heading{
+    width: 100%;
+    height: 45px;
+    background-color: #38af7d;
+    line-height: 45px;
+
+
+}
+.l{
+    margin-left: 15px;
+    font-size: 20px;
+}
+.r{
+    float: right;
+    margin-right: 15px;
+}
+.heading h3{
+    padding-top: 10px;
+    padding-left: 2px;
+}
+.content_menu{
+    width: 15%;
+    height: 674px;
+    overflow:auto;
+    background-color: #40cb93;
+    float: left;
+}
+.content_menu dl{
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 15px;
+}
+.content_menu dt{
+    height: 35px;
+    margin-top: 7px;
+}
+.content_menu li{
+    height: 30px;
+    list-style: none;
+}
+.content_body{
+    width: 85%;
+    height: 674px;
+    float: left;
+}
+
+.iframe{
+    width:100%;
+    height:100%;
+}
+.footing{
+    width: 100%;
+    height: 15%;
+    background-color: white;
+    /*清除浮动*/
+    clear: both;
+
+}

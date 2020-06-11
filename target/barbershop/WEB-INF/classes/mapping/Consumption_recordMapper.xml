@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yq.barberShopSSM.mapper.Consumption_recordMapper" >
+  <resultMap id="BaseResultMap" type="com.yq.barberShopSSM.pojo.Consumption_record" >
+    <id column="consumption_record_id" property="consumptionRecordId" jdbcType="INTEGER" />
+    <result column="consumption_service_id" property="consumptionServiceId" jdbcType="INTEGER" />
+    <result column="barber_id" property="barberId" jdbcType="INTEGER" />
+    <result column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="consumption_time" property="consumptionTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from consumption_record
+    where consumption_record_id = #{consumptionRecordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yq.barberShopSSM.pojo.Consumption_record" >
+    insert into consumption_record (consumption_record_id, barber_id, member_id, 
+      price, consumption_time, consumption_service_id)
+    values (#{consumptionRecordId,jdbcType=INTEGER}, #{barberId,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, 
+      #{price,jdbcType=INTEGER}, #{consumptionTime,jdbcType=TIMESTAMP}, #{consumptionServiceId,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yq.barberShopSSM.pojo.Consumption_record" >
+    update consumption_record
+    set barber_id = #{barberId,jdbcType=INTEGER},
+      member_id = #{memberId,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      consumption_time = #{consumptionTime,jdbcType=TIMESTAMP},
+      consumption_service_id = #{consumptionServiceId,jdbcType=INTEGER}
+    where consumption_record_id = #{consumptionRecordId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select consumption_record_id, barber_id, member_id, price, consumption_time, consumption_service_id
+    from consumption_record
+    where consumption_record_id = #{consumptionRecordId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select consumption_record_id, barber_id, member_id, price, consumption_time, consumption_service_id
+    from consumption_record
+  </select>
+
+
+  <select id="selectByMemberId" resultMap="BaseResultMap" >
+    select consumption_record_id, barber_id, member_id, price, consumption_time, consumption_service_id
+    from consumption_record
+    where member_id = #{memberId,jdbcType=INTEGER}
+  </select>
+</mapper>
